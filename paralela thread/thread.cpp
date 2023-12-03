@@ -26,7 +26,12 @@ int main() {
     auto start_time = high_resolution_clock::now();
 
     //aca van el numero de hebras
-    int num_threads = thread::hardware_concurrency();
+    #ifdef NUM_THREADS
+        int num_threads = NUM_THREADS;
+    #else
+        int num_threads = std::thread::hardware_concurrency();
+    #endif
+
     vector<thread> threads;
     //aqui creo una cantidad de filas en base a las hebras disponibles
     int filas_por_hebra = image.rows / num_threads;

@@ -1,13 +1,15 @@
 CXX = g++
 CXXFLAGS = -std=c++11
-OPENCV_LIBS = `pkg-config --cflags --libs opencv4`
+OPENCV_LIBS = -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_imgcodecs
+OPENCV_INCLUDE = -I/usr/local/include/opencv4
 
+TARGET = thread
 SRC = thread.cpp
 
 all: $(TARGET)
 
 $(TARGET): $(SRC)
-	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET) $(OPENCV_LIBS)
-
+	$(CXX) $(CXXFLAGS) $(OPENCV_INCLUDE) $(SRC) -o $(TARGET) -DNUM_THREADS=$(NUM_THREADS) $(OPENCV_LIBS)
+	
 clean:
 	rm -f $(TARGET)
