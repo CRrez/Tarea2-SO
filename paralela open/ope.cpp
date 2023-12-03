@@ -10,7 +10,9 @@ int main() {
     //lectura de la imagen
     
     Mat image = imread("imagenacolor.png", IMREAD_COLOR);
-
+    
+    cout << "Cargando Imagen..." << endl;
+    cout << "Filas (Ancho): " << image.cols << " Columnas (alto): " << image.rows << endl;
     //numero de hebras con las que se trabajara
     int NUM_THREADS;
 
@@ -34,5 +36,6 @@ int main() {
 
     //impresion del a imagen en la escal de grises
     imwrite("imagengris.png", image);
-    return 0;
+    cout << "FIn de la Conversion." << endl;
+    cout << "El tiempo gasto en segundos fue de : " << duration.count() / 1000.0 << endl;
 }
