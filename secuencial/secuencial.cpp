@@ -11,15 +11,15 @@ Mat image = imread ("imagenacolor.png",IMREAD_COLOR) ;
 
 int main()
 {
-    cout << "Cargando Iagen..." << endl;
-    cout << "Filas (Ancho): " << image.rows << " Columnas (alto): " << image.cols << endl;
+    cout << "Cargando Imagen..." << endl;
+    cout << "Filas (Ancho): " << image.cols << " Columnas (alto): " << image.rows << endl;
 
         //inicia el temporizador
         auto start_time = high_resolution_clock::now();
 
-            for (int r =0; r<image.rows; r++) 
+            for (double  r =0; r<image.rows; r++) 
             {
-                for (int c =0; c<image.cols; c++) 
+                for (double  c =0; c<image.cols; c++) 
                 {
 
                     //saca un pixel de la imagen,obteniendo su patron RGB
