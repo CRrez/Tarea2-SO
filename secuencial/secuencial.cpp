@@ -33,7 +33,7 @@ int main()
              auto end_time = high_resolution_clock::now();
              auto duration = duration_cast<milliseconds>(end_time - start_time);
 
-
+    //impresion de la imagen en escala de grises
     imwrite("imagengris.png",image);
     waitKey(0);
 
