@@ -3,7 +3,7 @@
 using namespace cv;
 using namespace std;
 // read the image file .
-Mat image = imread ( ”imagenacolor.jpg”,IMREAD COLOR) ;
+Mat image = imread ("imagenacolor.jpg",IMREAD_COLOR) ;
 // read each pixel (RGB pixel) .
 int main()
 {
@@ -11,9 +11,9 @@ int main()
             {
                 for (int c =0; c<image.cols; c++) 
                 {
-                    Point3 <uchar >∗p =image.ptr<Point3 <uchar> >(r,c) ;
+                    Vec3b *p =image.ptr<Vec3b>(r,c);
                     //x:B y:G z:R
-                    printf ("( %d %d %d )" ,p−>x,p−>y,p−>z) ;
+                    printf ("( %d %d %d )" , (*p)[0],(*p)[1],(*p)[2]) ;
                 }
             }
 }
