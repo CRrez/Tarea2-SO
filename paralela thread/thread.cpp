@@ -34,7 +34,8 @@ int main() {
     int fin_fila = 0;
 
 // este for lo que hace es que crea n-1 hebras para procesar la funcion
-    for (int i = 0; i < num_threads - 1; ++i) {
+    for (int i = 0; i < num_threads - 1; ++i) 
+    {
 
         fin_fila = inicio_fila + filas_por_hebra;
         threads.emplace_back(convertToGrayscale, inicio_fila, fin_fila);
@@ -45,7 +46,8 @@ int main() {
     // sepa cuando termina todo el proceso
     threads.emplace_back(convertToGrayscale, inicio_fila, image.rows);
 
-    for (auto &t : threads) {
+    for (auto &t : threads) 
+    {
         t.join();
     }
 //termina el temporizador
