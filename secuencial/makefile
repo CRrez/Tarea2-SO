@@ -1,15 +1,15 @@
 CXX = g++
 CXXFLAGS = -std=c++11
-OPENCV_LIBS = `pkg-config --cflags --libs opencv4`
-OPENCV_INCLUDE = `pkg-config --cflags opencv`
+OPENCV_LIBS = -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_imgcodecs
+OPENCV_INCLUDE = -I/usr/local/include/opencv4
 
-TARGET = 
+TARGET = secuencial
 SRC = secuencial.cpp
 
 all: $(TARGET)
 
 $(TARGET): $(SRC)
-	$(CXX) $(CXXFLAGS)$(OPENCV_INCLUDE) -o $(SRC) $(TARGET) $(OPENCV_LIBS)
+	$(CXX) $(CXXFLAGS) $(OPENCV_INCLUDE) $(SRC) -o $(TARGET) $(OPENCV_LIBS)
 	
 run: $(TARGET)
 	@echo "Ejecutando la conversión a escala de grises..."
