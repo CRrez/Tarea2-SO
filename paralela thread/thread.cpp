@@ -25,6 +25,8 @@ int main() {
     //empieza el temporizador de tiempo
     auto start_time = high_resolution_clock::now();
     int num_threads = std::thread::hardware_concurrency();
+    cout << "Cargando Imagen..." << endl;
+    cout << "Filas (Ancho): " << image.cols << " Columnas (alto): " << image.rows << endl;
 
     //aca van el numero de hebras
     #ifdef NUM_THREADS
@@ -60,7 +62,8 @@ int main() {
 
     //impresion de la imagen en escala de grises
     imwrite("imagengris.png", image);
-
+    cout << "FIn de la Conversion." << endl;
+    cout << "El tiempo gasto en segundos fue de : " << duration.count() / 1000.0 << endl;
 
     return 0;
 }
