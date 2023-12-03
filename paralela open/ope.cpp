@@ -1,6 +1,7 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include <chrono>
+#include <omp.h>
 using namespace cv;
 using namespace std;
 using namespace std::chrono;
