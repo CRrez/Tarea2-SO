@@ -2,11 +2,12 @@
 #include <opencv2/opencv.hpp>
 #include <chrono>
 #include <thread>
+#include <thread>
 using namespace cv;
 using namespace std;
 using namespace std::chrono;
 
-Mat image = imread("imagenacolor.jpg", IMREAD_COLOR);
+Mat image = imread("imagenacolor.png", IMREAD_COLOR);
 
 //esta funcion es la que crea la imagen en escala de grises
 void convertToGrayscale(int inicio_fila, int fin_fila) {
