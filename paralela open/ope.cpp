@@ -8,16 +8,17 @@ using namespace std::chrono;
 
 int main() {
     //lectura de la imagen
+    
     Mat image = imread("imagenacolor.png", IMREAD_COLOR);
 
     //numero de hebras con las que se trabajara
-    int num_threads;
+    int NUM_THREADS;
 
     //inicio del temporizador
     auto start_time = high_resolution_clock::now();
     //aca se indica de que el for trabajara en base a las cantidades de hebras solicitadas
 
-    #pragma omp parallel for num_threads(num_threads)
+    #pragma omp parallel for NUM_THREADS(NUM_THREADS)
     for (int r = 0; r < image.rows; ++r) 
     {
         for (int c = 0; c < image.cols; ++c) 

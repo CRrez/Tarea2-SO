@@ -1,14 +1,15 @@
 CXX = g++
 CXXFLAGS = -std=c++11
-OPENCV_LIBS = `pkg-config --cflags --libs opencv4`
+OPENCV_LIBS = -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_imgcodecs
+OPENCV_INCLUDE = -I/usr/local/include/opencv4
 
-TARGET = convertir_a_grises
-SRC = main.cpp
+TARGET = openmp
+SRC = ope.cpp
 
 all: $(TARGET)
 
 $(TARGET): $(SRC)
-	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET) $(OPENCV_LIBS)
-
+	$(CXX) $(CXXFLAGS) $(OPENCV_INCLUDE) $(SRC) -o $(TARGET) $(NUM_THREADS) $(OPENCV_LIBS)
+	
 clean:
 	rm -f $(TARGET)
