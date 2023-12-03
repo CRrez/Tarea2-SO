@@ -1,1 +1,1 @@
-# Tarea2-SO
+# Programa de ejecucion secuencial
