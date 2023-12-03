@@ -9,7 +9,7 @@ SRC = thread.cpp
 all: $(TARGET)
 
 $(TARGET): $(SRC)
-	$(CXX) $(CXXFLAGS) $(OPENCV_INCLUDE) $(SRC) -o $(TARGET) -DNUM_THREADS=$(NUM_THREADS) $(OPENCV_LIBS)
+	$(CXX) $(CXXFLAGS) $(OPENCV_INCLUDE) $(SRC) -o $(TARGET) $(NUM_THREADS) $(OPENCV_LIBS)
 	
 clean:
 	rm -f $(TARGET)

@@ -24,12 +24,11 @@ void convertToGrayscale(int inicio_fila, int fin_fila) {
 int main() {
     //empieza el temporizador de tiempo
     auto start_time = high_resolution_clock::now();
+    int num_threads = std::thread::hardware_concurrency();
 
     //aca van el numero de hebras
     #ifdef NUM_THREADS
-        int num_threads = NUM_THREADS;
-    #else
-        int num_threads = std::thread::hardware_concurrency();
+         num_threads = NUM_THREADS;
     #endif
 
     vector<thread> threads;
