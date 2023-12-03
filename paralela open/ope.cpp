@@ -7,7 +7,7 @@ using namespace std;
 using namespace std::chrono;
 
 int main() {
-    Mat image = imread("imagenacolor.jpg", IMREAD_COLOR);
+    Mat image = imread("imagenacolor.png", IMREAD_COLOR);
 
     int num_threads;
 
