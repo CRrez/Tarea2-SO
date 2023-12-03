@@ -1,27 +1,57 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include <chrono>
+#include <thread>
 using namespace cv;
 using namespace std;
 using namespace std::chrono;
 
-// read the image file .
-Mat image = imread ("imagenacolor.jpg",IMREAD_COLOR) ;
-// read each pixel (RGB pixel) .
-int main()
-{
+Mat image = imread("imagenacolor.jpg", IMREAD_COLOR);
 
-        auto start_time = high_resolution_clock::now();
+//esta funcion es la que crea la imagen en escala de grises
+void convertToGrayscale(int inicio_fila, int fin_fila) {
+    for (int r = inicio_fila; r < fin_fila; ++r) {
+        for (int c = 0; c < image.cols; ++c) {
+            Vec3b *p = image.ptr<Vec3b>(r, c);
+            int grayscaleValue = 0.3 * (*p)[2] + 0.59 * (*p)[1] + 0.11 * (*p)[0];
+            image.at<uchar>(r, c) = static_cast<uchar>(grayscaleValue);
+        }
+    }
+}
 
-            for (int r =0; r<image.rows; r++) 
-            {
-                for (int c =0; c<image.cols; c++) 
-                {
-                    Vec3b *p =image.ptr<Vec3b>(r,c);
-                    //x:B y:G z:R
-                    printf ("( %d %d %d )" , (*p)[0],(*p)[1],(*p)[2]) ;
-                }
-            }
-             auto end_time = high_resolution_clock::now();
-             auto duration = duration_cast<milliseconds>(end_time - start_time);
+int main() {
+    //empieza el temporizador de tiempo
+    auto start_time = high_resolution_clock::now();
+
+    //aca van el numero de hebras
+    int num_threads = thread::hardware_concurrency();
+    vector<thread> threads;
+    //aqui creo una cantidad de filas en base a las hebras disponibles
+    int filas_por_hebra = image.rows / num_threads;
+    int inicio_fila = 0;
+    int fin_fila = 0;
+
+// este for lo que hace es que crea n-1 hebras para procesar la funcion
+    for (int i = 0; i < num_threads - 1; ++i) {
+
+        fin_fila = inicio_fila + filas_por_hebra;
+        threads.emplace_back(convertToGrayscale, inicio_fila, fin_fila);
+        inicio_fila = fin_fila;
+    }
+
+    // aca se procesa la ultima henra con los ultimos datos de la imagen para que esta
+    // sepa cuando termina todo el proceso
+    threads.emplace_back(convertToGrayscale, inicio_fila, image.rows);
+
+    for (auto &t : threads) {
+        t.join();
+    }
+//termina el temporizador
+    auto end_time = high_resolution_clock::now();
+    auto duration = duration_cast<milliseconds>(end_time - start_time);
+
+    imshow("Grayscale Image", image);
+    waitKey(0);
+
+    return 0;
 }
