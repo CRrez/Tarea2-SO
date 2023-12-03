@@ -34,7 +34,7 @@ int main()
              auto duration = duration_cast<milliseconds>(end_time - start_time);
 
 
-    imshow("Grayscale Image",image);
+    imwrite("imagengris.png",image);
     waitKey(0);
 
     return 0;
