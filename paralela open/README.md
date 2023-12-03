@@ -14,3 +14,5 @@ usr/local/include/opencv4)
 5. una vez terminado todo, ejecutar el comando ./openmp imagenacolor "nombre de la imagen resultante".png y la cantidad de hebras
 
 por ejemplo  ./openmp imagenacolor.png imagengris.png 6
+
+6. revisar en carpeta del proyecto la imagen resultante
