@@ -19,7 +19,9 @@ int main()
                 {
                     Vec3b *p =image.ptr<Vec3b>(r,c);
                     //x:B y:G z:R
-                    printf ("( %d %d %d )" , (*p)[0],(*p)[1],(*p)[2]) ;
+                    int grayscaleValue = 0.3 * (*p)[2] + 0.59 * (*p)[1] + 0.11 * (*p)[0];
+                    image.at<uchar>(r, c) = static_cast<uchar>(grayscaleValue);
+
                 }
             }
              auto end_time = high_resolution_clock::now();
