@@ -1,7 +1,7 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
-using namespace cv ;
-using namespace s t d ;
+using namespace cv;
+using namespace std;
 // read the image file .
 Mat image = imread ( ”imagenacolor.jpg”,IMREAD COLOR) ;
 // read each pixel (RGB pixel) .
