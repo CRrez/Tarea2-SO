@@ -50,8 +50,8 @@ int main() {
     auto end_time = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(end_time - start_time);
 
-    imshow("Grayscale Image", image);
-    waitKey(0);
+    imwrite("imagengris.png", image);
+
 
     return 0;
 }
