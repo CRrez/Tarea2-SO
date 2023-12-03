@@ -6,10 +6,14 @@ using namespace std;
 using namespace std::chrono;
 
 // lee la imagen
+
 Mat image = imread ("imagenacolor.png",IMREAD_COLOR) ;
 
 int main()
 {
+    cout << "Cargando Iagen..." << endl;
+    cout << "Filas (Ancho): " << image.rows << " Columnas (alto): " << image.cols << endl;
+
         //inicia el temporizador
         auto start_time = high_resolution_clock::now();
 
@@ -32,6 +36,9 @@ int main()
             //termina el temporizador
              auto end_time = high_resolution_clock::now();
              auto duration = duration_cast<milliseconds>(end_time - start_time);
+
+     cout << "FIn de la Conversion." << endl;
+     cout << "El tiempo gasto en segundos fue de : " << duration.count() / 1000.0 << endl;
 
     //impresion de la imagen en escala de grises
     imwrite("imagengris.png",image);
