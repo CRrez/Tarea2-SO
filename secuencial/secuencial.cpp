@@ -37,12 +37,15 @@ int main()
              auto end_time = high_resolution_clock::now();
              auto duration = duration_cast<milliseconds>(end_time - start_time);
 
-     cout << "FIn de la Conversion." << endl;
-     cout << "El tiempo gasto en segundos fue de : " << duration.count() / 1000.0 << endl;
+
 
     //impresion de la imagen en escala de grises
     imwrite("imagengris.png",image);
-    waitKey(0);
+
+
+     cout << "FIn de la Conversion." << endl;
+     cout << "El tiempo gasto en segundos fue de : " << duration.count() / 1000.0 << endl;
+
 
     return 0;
 }
