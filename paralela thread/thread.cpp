@@ -10,8 +10,10 @@ Mat image = imread("imagenacolor.png", IMREAD_COLOR);
 
 //esta funcion es la que crea la imagen en escala de grises
 void convertToGrayscale(int inicio_fila, int fin_fila) {
-    for (int r = inicio_fila; r < fin_fila; ++r) {
-        for (int c = 0; c < image.cols; ++c) {
+    for (int r = inicio_fila; r < fin_fila; ++r)
+     {
+        for (int c = 0; c < image.cols; ++c) 
+        {
             Vec3b *p = image.ptr<Vec3b>(r, c);
             int grayscaleValue = 0.3 * (*p)[2] + 0.59 * (*p)[1] + 0.11 * (*p)[0];
             image.at<uchar>(r, c) = static_cast<uchar>(grayscaleValue);
@@ -50,6 +52,7 @@ int main() {
     auto end_time = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(end_time - start_time);
 
+    //impresion de la imagen en escala de grises
     imwrite("imagengris.png", image);
 
 
