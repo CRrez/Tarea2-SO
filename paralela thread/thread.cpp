@@ -2,7 +2,6 @@
 #include <opencv2/opencv.hpp>
 #include <chrono>
 #include <thread>
-#include <thread>
 using namespace cv;
 using namespace std;
 using namespace std::chrono;
