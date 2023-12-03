@@ -1,1 +1,0 @@
-#Programa Usando libreria Pthread
